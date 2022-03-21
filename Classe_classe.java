@@ -1,3 +1,3 @@
 public class Classe_classe {
-    int conter;
+    int conteur;
 }
