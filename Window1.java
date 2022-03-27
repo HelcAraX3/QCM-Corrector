@@ -1,0 +1,122 @@
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import java.io.File;
+
+
+public class Window1 extends Application {
+
+    public static void main(String[] args) {
+        Application.launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Correcteur de QCM");
+        Group root = new Group();
+        Scene scene = new Scene(root, 1000, 600);
+
+        //Background style
+        Canvas canvas = new Canvas(1000, 600);
+        StackPane holder = new StackPane();
+        holder.getChildren().add(canvas);
+        holder.setStyle("-fx-background-color:   #eaecee  ");
+
+        //Buttons style
+        Font font = Font.font("Courrier New", FontWeight.BOLD,20);
+        BorderStroke borderStroke = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2));
+        Border border = new Border(borderStroke);
+
+        //CSV loader
+        FileChooser fileChooser = new FileChooser();
+        configuringFileChooser(fileChooser);
+
+
+        { /*
+        MenuItem menuItem1 = new MenuItem("Option 1");
+        MenuItem menuItem2 = new MenuItem("Option 2");
+        MenuItem menuItem3 = new MenuItem("Option 3");
+        MenuButton menuButton = new MenuButton("Options", null, menuItem1, menuItem2, menuItem3);
+        //root.getChildren().add(menuButton);
+        */ } // Essai pour menu déroulant
+
+        //Button0 CORRECTION
+        Button btn0 = new Button();
+            btn0.setFont(font);
+            btn0.setLayoutX(350);
+            btn0.setLayoutY(400);btn0.setMinSize(300,50);
+            btn0.setStyle("-fx-background-color:      #abb2b9     ");
+            btn0.setBorder(border);
+            btn0.setAlignment(Pos.CENTER);
+            btn0.setText(" CORRECTION ");
+            btn0.setOnAction(event -> System.out.println("Correction à venir"));
+
+        //Button1 STATISTIQUES
+        Button btn1 = new Button();
+            btn1.setFont(font);
+            btn1.setLayoutX(350);
+            btn1.setLayoutY(500);
+            btn1.setMinSize(300,50);
+            btn1.setStyle("-fx-background-color:      #abb2b9     ");
+            btn1.setBorder(border);
+            btn1.setAlignment(Pos.CENTER);
+            btn1.setText("STATISTIQUES");
+            btn1.setOnAction(event -> System.out.println("Statistiques à venir"));
+
+        //Button2 LOAD FILES
+        Button btn2 = new Button();
+            btn2.setFont(font);
+            btn2.setLayoutX(100);
+            btn2.setLayoutY(100);
+            btn2.setMinSize(300,50);
+            btn2.setStyle("-fx-background-color:      #abb2b9    ");
+            btn2.setBorder(border);
+            btn2.setAlignment(Pos.CENTER);
+            btn2.setText("LOAD FILE");
+            btn2.setOnAction(event -> {
+            File file = fileChooser.showOpenDialog(primaryStage);
+            if (file != null) {
+                openFile();}
+
+        });
+
+        //Button3 LOAD DIRECTORY
+        Button btn3 = new Button();
+            btn3.setFont(font);
+            btn3.setLayoutX(100);
+            btn3.setLayoutY(200);
+            btn3.setMinSize(300,50);
+            btn3.setStyle("-fx-background-color:      #abb2b9     ");
+            btn3.setBorder(border);
+            btn3.setAlignment(Pos.CENTER);
+            btn3.setText("LOAD DIRECTORY");
+            btn3.setOnAction(event -> fileChooser.showOpenMultipleDialog(primaryStage));
+
+        //BUILD INTERFACE
+        root.getChildren().add(holder);
+        root.getChildren().add(btn0);
+        root.getChildren().add(btn1);
+        root.getChildren().add(btn2);
+        root.getChildren().add(btn3);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    private void configuringFileChooser(FileChooser fileChooser) {
+
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
+    } //CSV FILTER
+
+    private void openFile() {} // Files LOADER
+
+}
