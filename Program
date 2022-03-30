@@ -32,7 +32,7 @@ public class Program {
                     if(reponseExistante) k = k + score;
                 }
                 else{
-                    k = k - pen;
+                    if(!ReponseExistante) k = k - pen;
                 }
 
             }
