@@ -1,9 +1,12 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -14,6 +17,23 @@ import java.io.File;
 
 
 public class Window1 extends Application {
+
+
+    String[][] tabl1 = new String[][]{
+            {"1","A","B","","",""},
+            {"2","","B","","D",""},
+            {"3","","B","C","",""},
+            {"4","","","","","E"}
+    };
+    //corrigé
+    String[][] tabl2 = new String[][]{
+            {"1","","B","","D",""},
+            {"2","","","","D",""},
+            {"3","","B","C","",""},
+            {"4","","","","","E"}
+    };
+
+
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -36,18 +56,11 @@ public class Window1 extends Application {
         BorderStroke borderStroke = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2));
         Border border = new Border(borderStroke);
 
+
         //CSV loader
         FileChooser fileChooser = new FileChooser();
         configuringFileChooser(fileChooser);
 
-
-        { /*
-        MenuItem menuItem1 = new MenuItem("Option 1");
-        MenuItem menuItem2 = new MenuItem("Option 2");
-        MenuItem menuItem3 = new MenuItem("Option 3");
-        MenuButton menuButton = new MenuButton("Options", null, menuItem1, menuItem2, menuItem3);
-        //root.getChildren().add(menuButton);
-        */ } // Essai pour menu déroulant
 
         //Button0 CORRECTION
         Button btn0 = new Button();
@@ -58,7 +71,30 @@ public class Window1 extends Application {
             btn0.setBorder(border);
             btn0.setAlignment(Pos.CENTER);
             btn0.setText(" CORRECTION ");
-            btn0.setOnAction(event -> System.out.println("Correction à venir"));
+            btn0.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+
+                Label secondLabel = new Label("Action sur bouton1");
+
+                StackPane secondaryLayout = new StackPane();
+                secondaryLayout.getChildren().add(secondLabel);
+
+                Scene secondScene = new Scene(secondaryLayout, 900, 500);
+
+                // New window (Stage)
+                Stage newWindow = new Stage();
+                newWindow.setTitle("Correction QCM");
+                newWindow.setScene(secondScene);
+
+                // Set position of second window, related to primary window.
+                newWindow.setX(primaryStage.getX() + 200);
+                newWindow.setY(primaryStage.getY() + 100);
+                Program.comparer(tabl1,tabl2);
+                newWindow.show();
+            }
+        });
 
         //Button1 STATISTIQUES
         Button btn1 = new Button();
