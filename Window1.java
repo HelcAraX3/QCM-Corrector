@@ -15,10 +15,12 @@ import java.io.File;
 public class Window1 extends Application {
 
     private Stage stage;
-    private Scene scene1;
+    protected Scene scene1;
     private Group root1;
-    private Scene scene2;
-    private Group root2;
+    protected Scene scene2;
+    public Group root2;
+    private Scene scene3;
+    private Group root3;
     int width = 600;
     int height = 1000;
     private Button btn0;
@@ -30,6 +32,11 @@ public class Window1 extends Application {
     private Button btn6;
     private Button btn7;
     private Button btn8;
+    private Button btn9;
+    private Button btn10;
+    private Button btn11;
+    private Button btn12;
+    private Button btn13;
 
     String[][] tabl1 = new String[][]{
             {"1","A","B","","",""},
@@ -56,6 +63,7 @@ public class Window1 extends Application {
         stage = primaryStage;
         scene1 = createSceneOne();
         scene2 = createSceneTwo();
+        scene3 = createSceneThree();
         stage.setScene(scene1);
         stage.show();
     }
@@ -88,7 +96,7 @@ public class Window1 extends Application {
         btn1.setBorder(border);
 
         //ActionEvent Button 1
-        btn1.setOnAction(event -> System.out.println("IMPLEMENTATION EN COURS"));
+        btn1.setOnAction(event ->switchScenes(scene3));
 
         //Button 2
         btn2 = new Button("LOAD FILE");
@@ -150,6 +158,7 @@ public class Window1 extends Application {
         btn7.setLayoutX(450);
         btn7.setLayoutY(500);
         btn7.setBorder(border);
+        btn7.setOnAction(event -> switchScenes(scene3));
 
         //Button 5
         btn5 = new Button("PRECEDENT");
@@ -189,6 +198,69 @@ public class Window1 extends Application {
 
     return scene2;
     }
+
+    private Scene createSceneThree() {
+        root3 = new Group();
+
+        btn9 = new Button("Barème");
+        btn9.setOnAction(event ->stage.setScene(scene3));
+        btn9.setMinSize(200, 50);
+        btn9.setStyle("-fx-background-color:      #abb2b9     ");
+        btn9.setFont(font);
+        btn9.setTextFill(Color.BLACK);
+        btn9.setLayoutX(750);
+        btn9.setLayoutY(50);
+        btn9.setBorder(border);
+
+        btn10 = new Button("Moyenne");
+        btn10.setOnAction(event ->stage.setScene(scene3));
+        btn10.setMinSize(200, 50);
+        btn10.setStyle("-fx-background-color:      #abb2b9     ");
+        btn10.setFont(font);
+        btn10.setTextFill(Color.BLACK);
+        btn10.setLayoutX(750);
+        btn10.setLayoutY(150);
+        btn10.setBorder(border);
+
+        btn11 = new Button("Détails");
+        btn11.setOnAction(event ->stage.setScene(scene3));
+        btn11.setMinSize(200, 50);
+        btn11.setStyle("-fx-background-color:      #abb2b9     ");
+        btn11.setFont(font);
+        btn11.setTextFill(Color.BLACK);
+        btn11.setLayoutX(750);
+        btn11.setLayoutY(250);
+        btn11.setBorder(border);
+
+        btn12 = new Button("Sauvegarde");
+        btn12.setOnAction(event ->stage.setScene(scene3));
+        btn12.setMinSize(200, 50);
+        btn12.setStyle("-fx-background-color:      #abb2b9     ");
+        btn12.setFont(font);
+        btn12.setTextFill(Color.BLACK);
+        btn12.setLayoutX(750);
+        btn12.setLayoutY(350);
+        btn12.setBorder(border);
+
+
+        btn13 = new Button("MENU PRINCIPAL");
+        btn13.setMinSize(200,50);
+        btn13.setStyle("-fx-background-color:      #abb2b9    ");
+        btn13.setFont(font);
+        btn13.setTextFill(Color.BLACK);
+        btn13.setLayoutX(100);
+        btn13.setLayoutY(500);
+        btn13.setBorder(border);
+        btn13.setOnAction(event -> switchScenes(scene1));
+
+
+        root3.getChildren().addAll(btn9,btn10,btn11,btn12,btn13);
+        scene3 = new Scene(root3, height, width);
+        scene3.setFill(Color.LIGHTGREY);
+
+        return scene3;
+    }
+
         //.CSV FILTER
         FileChooser fileChooser = new FileChooser();{
         configuringFileChooser(fileChooser);}
