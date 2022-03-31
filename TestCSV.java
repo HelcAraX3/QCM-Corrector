@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,8 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Test extends Application {
-    public class Record {
+public class TestCSV extends ClasseAbstraite {
+    public static class Record {
         //Assume each record have 6 elements, all String
         private final SimpleStringProperty f1, f2, f3, f4, f5, f6;
         public String getF1() {
@@ -44,15 +43,16 @@ public class Test extends Application {
             this.f5 = new SimpleStringProperty(f5);
             this.f6 = new SimpleStringProperty(f6);
         }
+
     }
     private final TableView<Record> tableView = new TableView<>();
     private final ObservableList<Record> dataList
             = FXCollections.observableArrayList();
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) {
         primaryStage.setTitle("Copie du QCM");
         Group root = new Group();
-        TableColumn columnF1 = new TableColumn("blabla");
+        TableColumn columnF1 = new TableColumn("f1");
         columnF1.setCellValueFactory(
                 new PropertyValueFactory<>("f1"));
         TableColumn columnF2 = new TableColumn("f2");
@@ -77,19 +77,19 @@ public class Test extends Application {
         vBox.setSpacing(10);
         vBox.getChildren().add(tableView);
         root.getChildren().add(vBox);
-        primaryStage.setScene(new Scene(root, 600, 250));
+        primaryStage.setScene(new Scene(root,600,250));
         primaryStage.show();
         readCSV();
     }
     protected void readCSV() {
         String CsvFile = "CopieTest.csv";
-        String FieldDelimiter = ";";
+        String FieldDelimiter = ",";
         BufferedReader br;
         try {
             br = new BufferedReader(new FileReader(CsvFile));
             String line;
             while ((line = br.readLine()) != null) {
-                String[] fields = line.split(FieldDelimiter, -1);
+                String[] fields = line.split(FieldDelimiter,0);
                 Record record = new Record(fields[0], fields[1], fields[2],
                         fields[3], fields[4], fields[5]);
                 dataList.add(record);

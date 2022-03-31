@@ -3,60 +3,12 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
 
-
-public class Window1 extends Application {
-
-    private Stage stage;
-    protected Scene scene1;
-    private Group root1;
-    protected Scene scene2;
-    public Group root2;
-    private Scene scene3;
-    private Group root3;
-    int width = 600;
-    int height = 1000;
-    private Button btn0;
-    private Button btn1;
-    private Button btn2;
-    private Button btn3;
-    private Button btn4;
-    private Button btn5;
-    private Button btn6;
-    private Button btn7;
-    private Button btn8;
-    private Button btn9;
-    private Button btn10;
-    private Button btn11;
-    private Button btn12;
-    private Button btn13;
-
-    String[][] tabl1 = new String[][]{
-            {"1","A","B","","",""},
-            {"2","","B","","D",""},
-            {"3","","B","C","",""},
-            {"4","","","","","E"}
-    };
-    //corrigé
-    String[][] tabl2 = new String[][]{
-            {"1","","B","","D",""},
-            {"2","","","","D",""},
-            {"3","","B","C","",""},
-            {"4","","","","","E"}
-    };
-
-
-    //Buttons style
-    Font font = Font.font("Courrier New", FontWeight.BOLD,20);
-    BorderStroke borderStroke = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2));
-    Border border = new Border(borderStroke);
+public class Window1 extends ClasseAbstraite {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -67,7 +19,6 @@ public class Window1 extends Application {
         stage.setScene(scene1);
         stage.show();
     }
-
 
     private Scene createSceneOne() {
         root1 = new Group();
@@ -135,7 +86,7 @@ public class Window1 extends Application {
         return scene1;
         }
 
-    private Scene createSceneTwo() {
+    public Scene createSceneTwo() {
         root2 = new Group();
 
         //Button 4
@@ -264,20 +215,6 @@ public class Window1 extends Application {
         //.CSV FILTER
         FileChooser fileChooser = new FileChooser();{
         configuringFileChooser(fileChooser);}
-
-    private void configuringFileChooser(FileChooser fileChooser) {
-
-        fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
-
-    }
-
-    public void switchScenes (Scene scene) {
-        stage.setScene (scene);
-    }
-
-
-    private void openFile() {} // Files LOADER
 
     public static void main(String[] args) {
         Application.launch(args);
