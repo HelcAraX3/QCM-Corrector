@@ -1,23 +1,14 @@
 import java.util.Objects;
 import java.util.Arrays;
+import static java.lang.String.format;
+
 public class Program {
-    /*String[][] tabl1 = new String[][]{
-            {"1","A","B","","",""},
-            {"2","","B","","D",""},
-            {"3","","B","C","",""},
-            {"4","","","","","E"}
-    };
-    //corrigé
-    String[][] tabl2 = new String[][]{
-            {"1","","B","","D",""},
-            {"2","","","","D",""},
-            {"3","","B","C","",""},
-            {"4","","","","","E"}
-    };*/
-    public static double comparer(String[][] tab1, String[][] tab2) {
+
+    public static String comparer(String[][] tab1, String[][] tab2) {
         double score = 0.2; //point s'ajoutant pour chaque bonne réponse
         double pen = 0.05; //valeur de la pénalité (malus)
         double k = 0;
+        String copie = "";
         //Comparaison des valeurs de chaque colonne. La case du corrigé ne doit pas être vide.
         // Si c'est le cas, pas de score
         for (int i = 0; i < tab1.length; i++) {
@@ -31,13 +22,28 @@ public class Program {
                     if(!reponseExistante) k = k - pen;
                 }
             }
-            System.out.format("\n"+"Question "+(i+1)+" "+ Arrays.toString(tab1[i])+"\n" +"Note avec incrementation: " + "%.2f", k); //Résultat par question
+            //System.out.format("\n"+"Question "+(i+1)+" "+ Arrays.toString(tab1[i])+"\n" +"Note avec incrementation: " + "%.2f", k); //Résultat par question
+            //copie = copie+ format("\n"+"Question "+(i+1)+" "+ Arrays.toString(tab1[i])+"\n" +"Note avec incrementation: " + "%.2f", k);
+
         }
-        {return k;
+        {return format("%.2f", k);
         }
     }
-    /*public static void main() {
-        Program p = new Program();
-        p.comparer(p.tabl1, p.tabl2);
-    }*/
+    public static String LectureCorrige(String[][] tab2) {
+        String corrige ="";
+        for (int i = 0; i < tab2.length; i++) {
+            System.out.format("\n"+"Question "+(i+1)+" "+ Arrays.toString(tab2[i])+"\n" );
+            corrige = corrige + format("\n"+"Question "+(i+1)+" "+ Arrays.toString(tab2[i])+"\n");
+        }
+    return corrige;
+    }
+
+    public static String LectureCopie(String[][] tab1) {
+        String copie_etu ="";
+        for (int i = 0; i < tab1.length; i++) {
+            System.out.format("\n"+"Question "+(i+1)+" "+ Arrays.toString(tab1[i])+"\n" );
+            copie_etu = copie_etu + format("\n"+"Question "+(i+1)+" "+ Arrays.toString(tab1[i])+"\n");
+        }
+        return copie_etu;
+    }
 }

@@ -1,14 +1,21 @@
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 import java.io.File;
 
 public class Window1 extends ClasseAbstraite {
+    String copieEtudiant;
+    String corrigeQCM;
+    String note;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -22,7 +29,7 @@ public class Window1 extends ClasseAbstraite {
 
     private Scene createSceneOne() {
         root1 = new Group();
-        Canvas canvas = new Canvas(width,height);
+        Canvas canvas = new Canvas(l,h);
         root1.getChildren().add(canvas);
 
         //Button 0
@@ -81,7 +88,7 @@ public class Window1 extends ClasseAbstraite {
 
         //Build Interface
         root1.getChildren().addAll(btn0,btn1,btn2,btn3);
-        scene1 = new Scene(root1, height, width);
+        scene1 = new Scene(root1, h, l);
         scene1.setFill(Color.LIGHTGREY);
         return scene1;
         }
@@ -131,6 +138,7 @@ public class Window1 extends ClasseAbstraite {
         btn6.setLayoutY(500);
         btn6.setBorder(border);
 
+
         //Button 8
         btn8 = new Button("voir Correction copie");
         btn8.setMinSize(150,50);
@@ -140,11 +148,41 @@ public class Window1 extends ClasseAbstraite {
         btn8.setLayoutX(300);
         btn8.setLayoutY(300);
         btn8.setBorder(border);
-        btn8.setOnAction(event -> System.out.println(Program.comparer(tabl1,tabl2))); // Correction dans console
 
 
-        root2.getChildren().addAll(btn4,btn7,btn5,btn6,btn8);
-        scene2 = new Scene(root2, height, width);
+        copieEtudiant = (Program.LectureCopie(tabl1));
+        Label answer = new Label(copieEtudiant);
+        answer.setWrapText(true);
+        answer.setLayoutX(200);
+        answer.setLayoutY(200);
+        answer.setFont(font1);
+
+        corrigeQCM = (Program.LectureCorrige(tabl2));
+        Label corrige = new Label(corrigeQCM);
+        corrige.setWrapText(true);
+        corrige.setLayoutX(200);
+        corrige.setLayoutY(200);
+        corrige.setFont(font1);
+
+        note = (Program.comparer(tabl1,tabl2));
+        Label note_etu = new Label("Note : "+ note);
+        note_etu.setWrapText(true);
+        note_etu.setLayoutX(200);
+        note_etu.setLayoutY(200);
+        note_etu.setFont(font1);
+        note_etu.setTextFill(Color.RED);
+
+        stack1.getChildren().add(answer);stack1.setLayoutX(200);stack1.setLayoutY(80);
+        stack1.setBackground(background);stack1.setBorder(border);stack1.setMinSize(200,300);
+
+        stack2.getChildren().add(corrige);stack2.setLayoutX(600);stack2.setLayoutY(80);
+        stack2.setBackground(background);stack2.setBorder(border);stack2.setMinSize(200,300);
+
+        stack3.getChildren().add(note_etu);stack3.setLayoutX(200);stack3.setLayoutY(430);
+        stack3.setBackground(background);stack3.setBorder(border);
+
+        root2.getChildren().addAll(btn4,btn7,btn5,btn6,stack1,stack2,stack3);
+        scene2 = new Scene(root2, h, l);
         scene2.setFill(Color.LIGHTGREY);
 
     return scene2;
@@ -206,7 +244,7 @@ public class Window1 extends ClasseAbstraite {
 
 
         root3.getChildren().addAll(btn9,btn10,btn11,btn12,btn13);
-        scene3 = new Scene(root3, height, width);
+        scene3 = new Scene(root3, h, l);
         scene3.setFill(Color.LIGHTGREY);
 
         return scene3;
