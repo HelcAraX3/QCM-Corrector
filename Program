@@ -2,6 +2,7 @@ import java.util.Objects;
 import java.util.Arrays;
 
 public class Program {
+    //copie de l'évalué
     String[][] tabl1 = new String[][]{
             {"1","A","B","","",""},
             {"2","","B","","D",""},
@@ -36,7 +37,7 @@ public class Program {
                 }
 
             }
-            System.out.format("\n"+"Question "+(i+1)+" "+ Arrays.toString(tab1[i])+"\n" +"Note avec incrementation: " + "%.2f", k); //Résultat par question
+            System.out.format("\n"+"Question "+(i+1)+" "+ Arrays.toString(tab1[i])+"\n" +"Note avec incrémentation: " + "%.2f", k); //Résultat par question
         }
         {return k;
         }
