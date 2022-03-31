@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class TestCSV extends ClasseAbstraite {
     public static class Record {
-        //Assume each record have 6 elements, all String
+        //Let's assume each record have 6 elements (1 number and 5 potential answers), all String
         private final SimpleStringProperty f1, f2, f3, f4, f5, f6;
         public String getF1() {
             return f1.get();
