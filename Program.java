@@ -11,7 +11,7 @@ public class Program {
         String copie = "";
         //Comparaison des valeurs de chaque colonne. La case du corrigé ne doit pas être vide.
         // Si c'est le cas, pas de score
-        for (int i = 1; i < tab1.length; i++) {
+        for (int i = 0; i < tab1.length; i++) {
             for (int j = 1; j < tab1[i].length; j++) {
                 boolean reponsePasFausse = (Objects.equals(tab1[i][j], tab2[i][j]));
                 boolean reponseExistante = (!Objects.equals(tab2[i][j], ""));
