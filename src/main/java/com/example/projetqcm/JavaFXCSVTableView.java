@@ -47,7 +47,7 @@ public class JavaFXCSVTableView extends Application {
             return f6.get();
         }
 
-        Record(String f1, String f2, String f3, String f4,
+         Record(String f1, String f2, String f3, String f4,
                String f5, String f6) {
             this.f1 = new SimpleStringProperty(f1);
             this.f2 = new SimpleStringProperty(f2);
@@ -112,7 +112,7 @@ public class JavaFXCSVTableView extends Application {
 
     protected void readCSV() {
 
-        String CsvFile = "*\\Etu1.csv";
+        String CsvFile = "C:\\Users\\33769\\Desktop\\Etu1.csv";
         String FieldDelimiter = ",";
 
         BufferedReader br;
