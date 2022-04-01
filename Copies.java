@@ -1,5 +1,5 @@
 public class Copies {
-    static String[][] arr1 = new String[][]{{"Naomie"},
+    static String[][] arr1 = new String[][]{{"METON","Naomie", "1"},
             {"1","A","B","","",""},
             {"2","","B","","D",""},
             {"3","","B","C","",""},
@@ -12,7 +12,7 @@ public class Copies {
             {"4","","","","","E"},
             {"4","A","","","",""}
     };
-    static String[][] arr2 = new String[][]{{"Paul"},
+    static String[][] arr2 = new String[][]{{"BARTEZ","Paul","2"},
             {"1","A","B","","",""},
             {"2","","B","","D",""},
             {"3","","B","C","",""},
@@ -24,7 +24,7 @@ public class Copies {
             {"4","","","","","E"},
             {"4","","B","","",""}
     };
-    static String[][] arr3 = new String[][] {{"Nono"},
+    static String[][] arr3 = new String[][] {{"MARTEL","Nono","3"},
             {"1","A","B","","D",""},
             {"2","","B","","D",""},
             {"3","","B","C","",""},
