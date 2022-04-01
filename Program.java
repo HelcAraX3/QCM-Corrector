@@ -1,20 +1,15 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Objects;
 import java.util.Arrays;
 import static java.lang.String.format;
 
 public class Program extends Copies{
 
-    public static String comparer(String[][] tab1, String[][] tab2) {
-        double score = 0.2; //point s'ajoutant pour chaque bonne réponse
-        double pen = 0.05; //valeur de la pénalité (malus)
+    public static String compare(String[][] tab1, String[][] tab2) {
+        double score = 0.2; //points + for good answers
+        double pen = 0.05; //points - for bad answers
         double k = 0;
-        String copie = "";
-        //Comparaison des valeurs de chaque colonne. La case du corrigé ne doit pas être vide.
-        // Si c'est le cas, pas de score
+        //Compare values between each column. The case of corrected QCM must not be empty
+        //If that case, no scores
         for (int i = 0; i < tab1.length; i++) {
             for (int j = 1; j < tab1[i].length; j++) {
                 boolean reponsePasFausse = (Objects.equals(tab1[i][j], tab2[i][j]));
@@ -31,7 +26,7 @@ public class Program extends Copies{
         {return format("%.2f", k);
         }
     }
-    public static String LectureCorrige(String[][] tab2) {
+    public static String readCorrection(String[][] tab2) {
         String corrige ="";
         for (int i = 0; i < tab2.length; i++) {
             //System.out.format("\n"+"Question "+(i+1)+" "+ Arrays.toString(tab2[i])+"\n" );
@@ -40,7 +35,7 @@ public class Program extends Copies{
     return corrige;
     }
 
-    public static String LectureCopie(String[][] tab1) {
+    public static String readCopy(String[][] tab1) {
         String copie_etu ="";
         for (int i = 0; i < tab1.length; i++) {
             //System.out.format("\n"+"Question "+(i+1)+" "+ Arrays.toString(tab1[i])+"\n" );
@@ -48,33 +43,9 @@ public class Program extends Copies{
         }
         return copie_etu;
 
-
     }
 
-    public static void fonction(){
-        for (int i = 1; i < Copies.arrays.length; i++) {
-            Program p = new Program();
-            Copies.note=p.comparer(Copies.arrays[i], Copies.corr);
-            Copies.corrigeQCM=p.LectureCorrige(Copies.corr);
-            Copies.copieEtudiant=p.LectureCopie(Copies.arrays[i]);}
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
     public static String[][] fillstring(String[][] name) {
         String CsvFile = "Copie.csv";
         String FieldDelimiter = ",";
@@ -99,7 +70,7 @@ public class Program extends Copies{
             e.printStackTrace();
         }
     return name;
-    }
+    }**/
 
 
 

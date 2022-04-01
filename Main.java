@@ -12,13 +12,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.Arrays;
 
-public class Window1 extends ClasseAbstraite {
+public class Main extends ClassAbstract {
 
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage){
         stage = primaryStage;
         stage.setTitle("CORRECTEUR DE QCM");
         scene1 = createSceneOne();
@@ -28,15 +27,19 @@ public class Window1 extends ClasseAbstraite {
         stage.show();
     }
 
-    private Scene createSceneOne() {
+
+
+    public static Scene createSceneOne() {
         root1 = new Group();
         Canvas canvas = new Canvas(l,h);
         root1.getChildren().add(canvas);
 
-
         //Button 0
         btn0 = new Button("CORRECTION");
-        btn0.setOnAction(event ->stage.setScene(scene2));
+
+        //ActionEvent Button 1
+        btn0.setOnAction(event ->stage.setScene(scene2)); //scene1 => scene2
+
         btn0.setMinSize(300, 50);
         btn0.setStyle("-fx-background-color:      #abb2b9     ");
         btn0.setFont(font);
@@ -56,7 +59,7 @@ public class Window1 extends ClasseAbstraite {
         btn1.setBorder(border);
 
         //ActionEvent Button 1
-        btn1.setOnAction(event ->switchScenes(scene3));
+        btn1.setOnAction(event ->switchScenes(scene3)); //scene1 => scene3
 
         //Button 2
         btn2 = new Button("LOAD FILE");
@@ -69,7 +72,7 @@ public class Window1 extends ClasseAbstraite {
         btn2.setLayoutY(100);loadFile.setLayoutY(110);
         btn2.setBorder(border);
 
-        //ActionEvent Button 2
+        //ActionEvent Button 2 : File-Chooser
         btn2.setOnAction(event -> {
             File file = fileChooser.showOpenDialog(stage);
             if (file != null) {
@@ -88,7 +91,7 @@ public class Window1 extends ClasseAbstraite {
         btn3.setBorder(border);
 
         //ActionEvent Button 3
-        btn3.setOnAction(event -> fileChooser.showOpenMultipleDialog(stage));
+        btn3.setOnAction(event -> fileChooser.showOpenMultipleDialog(stage)); //File-Chooser
 
         //Build Interface
         root1.getChildren().addAll(btn0,btn1,btn2,btn3,loadFile,loadFolder);
@@ -109,7 +112,7 @@ public class Window1 extends ClasseAbstraite {
         btn4.setLayoutX(100);
         btn4.setLayoutY(500);
         btn4.setBorder(border);
-        btn4.setOnAction(event -> switchScenes(scene1)); //--> MENU P
+        btn4.setOnAction(event -> switchScenes(scene1));//scene2 => scene1
 
         //Button 7
         btn7 = new Button("STATS");
@@ -120,7 +123,7 @@ public class Window1 extends ClasseAbstraite {
         btn7.setLayoutX(440);
         btn7.setLayoutY(500);
         btn7.setBorder(border);
-        btn7.setOnAction(event -> switchScenes(scene3));
+        btn7.setOnAction(event -> switchScenes(scene3));//scene2 => scene3
 
         //Button 5
         btn5 = new Button("PRECEDENT");
@@ -143,61 +146,8 @@ public class Window1 extends ClasseAbstraite {
         btn6.setBorder(border);
 
 
-        //Button 8
-        btn8 = new Button("voir Correction copie");
-        btn8.setMinSize(150,50);
-        btn8.setStyle("-fx-background-color:      #abb2b9    ");
-        btn8.setFont(font);
-        btn8.setTextFill(Color.BLACK);
-        btn8.setLayoutX(300);
-        btn8.setLayoutY(300);
-        btn8.setBorder(border);
-
-
-
-
-        for (int i = 1; i < Copies.arrays.length; i++) {
-
-            //btn6.setOnAction(event -> ); // Essai d'implémentation du bouton suivant pour étudiant suivant
-
-            Copies.note=Program.comparer(Copies.arrays[i],Copies.corr);
-            Copies.copieEtudiant=Program.LectureCopie(Copies.arrays[i]);
-            Copies.corrigeQCM=Program.LectureCorrige(Copies.corr);}
-
-
-        Label answer = new Label(Copies.copieEtudiant);
-        answer.setWrapText(true);
-        answer.setLayoutX(200);
-        answer.setLayoutY(200);
-        answer.setFont(font1);
-
-
-        Label corrige = new Label(Copies.corrigeQCM);
-        corrige.setWrapText(true);
-        corrige.setLayoutX(200);
-        corrige.setLayoutY(200);
-        corrige.setFont(font1);
-
-
-        Label note_etu = new Label("Note : "+ Copies.note);
-        note_etu.setWrapText(true);
-        note_etu.setLayoutX(200);
-        note_etu.setLayoutY(200);
-        note_etu.setFont(font1);
-        note_etu.setTextFill(Color.RED);
-
-
-
-        stack1.getChildren().add(answer);stack1.setLayoutX(150);stack1.setLayoutY(30);
-        stack1.setBackground(background);stack1.setBorder(border);stack1.setMinSize(300,400);
-
-        stack2.getChildren().add(corrige);stack2.setLayoutX(550);stack2.setLayoutY(30);
-        stack2.setBackground(background);stack2.setBorder(border);stack2.setMinSize(300,400);
-
-        stack3.getChildren().add(note_etu);stack3.setLayoutX(150);stack3.setLayoutY(450);
-        stack3.setBackground(background);stack3.setBorder(border);
-
-
+        //scene2 Results
+        Results.initResults();
         root2.getChildren().addAll(btn4,btn7,btn5,btn6,stack1,stack2,stack3);
         scene2 = new Scene(root2, h, l);
         scene2.setFill(Color.LIGHTGREY);
@@ -205,7 +155,7 @@ public class Window1 extends ClasseAbstraite {
     return scene2;
     }
 
-    private Scene createSceneThree() {
+    public static Scene createSceneThree() {
         root3 = new Group();
 
         btn9 = new Button("Barème");
@@ -261,7 +211,7 @@ public class Window1 extends ClasseAbstraite {
         btn13.setLayoutX(100);
         btn13.setLayoutY(500);
         btn13.setBorder(border);
-        btn13.setOnAction(event -> switchScenes(scene1));
+        btn13.setOnAction(event -> switchScenes(scene1));//scene3 =>scene1
 
         btn14 = new Button("CORRECTION");
         btn14.setMinSize(200,50);
@@ -271,20 +221,18 @@ public class Window1 extends ClasseAbstraite {
         btn14.setLayoutX(400);
         btn14.setLayoutY(500);
         btn14.setBorder(border);
-        btn14.setOnAction(event -> switchScenes(scene2));
+        btn14.setOnAction(event -> switchScenes(scene2));//scene3 => scene2
 
-        // Graphique de type Bar Chart
+        // Bar Chart Graph
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
-        final BarChart<String,Number> bc = new BarChart<String,Number>(xAxis,yAxis);
+        final BarChart<String,Number> bc = new BarChart<>(xAxis, yAxis);
         bc.setTitle("Distributions des notes");
         xAxis.setLabel("Notes");
         yAxis.setLabel("Fréquence");
 
         stack4.getChildren().add(bc);stack4.setLayoutX(50);stack4.setLayoutY(50);
         stack4.setBackground(background);stack4.setBorder(border);stack4.setMinSize(650,400);
-
-
 
         root3.getChildren().addAll(btn9,btn10,btn11,btn12,btn13,btn14,stack4);
         scene3 = new Scene(root3, h, l);
@@ -294,7 +242,7 @@ public class Window1 extends ClasseAbstraite {
     }
 
         //.CSV FILTER
-        FileChooser fileChooser = new FileChooser();{
+        static FileChooser fileChooser = new FileChooser();{
         configuringFileChooser(fileChooser);}
 
     public static void main(String[] args) {
