@@ -37,7 +37,7 @@ public abstract class ClassAbstract extends Application {
     protected static Button btn14;
 
 
-    //Styles used in Main
+    //Styles used in Render
     static Font font = Font.font("Courrier New", FontWeight.BOLD,20);
     static Font font1 = Font.font("Courrier New", FontWeight.BOLD,12);
     Font font2 = Font.font("Courrier New", FontWeight.BOLD,12);
