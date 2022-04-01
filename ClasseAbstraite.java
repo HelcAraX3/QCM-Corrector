@@ -16,24 +16,24 @@ import javafx.scene.shape.*;
 
 public abstract class ClasseAbstraite  extends Application {
 
-    protected Stage stage;
-    protected Scene scene1;
+    static Stage stage;
+    protected static Scene scene1;
     protected Group root1;
-    protected Scene scene2;
-    protected Group root2;
-    protected Scene scene3;
+    protected static Scene scene2;
+    protected static Group root2;
+    protected static Scene scene3;
     protected Group root3;
-    int l = 600;
-    int h = 1000;
+    static int l = 600;
+    static int h = 1000;
     protected Button btn0;
     protected Button btn1;
     protected Button btn2;
     protected Button btn3;
-    protected Button btn4;
-    protected Button btn5;
-    protected Button btn6;
-    protected Button btn7;
-    protected Button btn8;
+    protected static Button btn4;
+    protected static Button btn5;
+    protected static Button btn6;
+    protected static Button btn7;
+    protected static Button btn8;
     protected Button btn9;
     protected Button btn10;
     protected Button btn11;
@@ -72,19 +72,19 @@ public abstract class ClasseAbstraite  extends Application {
     };
 
     //Style
-    Font font = Font.font("Courrier New", FontWeight.BOLD,20);
-    Font font1 = Font.font("Courrier New", FontWeight.BOLD,12);
+    static Font font = Font.font("Courrier New", FontWeight.BOLD,20);
+    static Font font1 = Font.font("Courrier New", FontWeight.BOLD,12);
     Font font2 = Font.font("Courrier New", FontWeight.BOLD,12);
-    BorderStroke borderStroke = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2));
-    Background background = new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY));
-    Border border = new Border(borderStroke);
+    static BorderStroke borderStroke = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2));
+    static Background background = new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY));
+    static Border border = new Border(borderStroke);
     //Rectangle rect1 = new Rectangle(300,300,Color.WHITE);
     //Rectangle rect2 = new Rectangle(300,300,Color.WHITE);
-    StackPane stack1 = new StackPane();
-    StackPane stack2 = new StackPane();
-    StackPane stack3 = new StackPane();
+    static StackPane stack1 = new StackPane();
+    static StackPane stack2 = new StackPane();
+    static StackPane stack3 = new StackPane();
 
-    public void switchScenes (Scene scene) {
+    public static void switchScenes(Scene scene) {
         stage.setScene (scene);
     }
 
