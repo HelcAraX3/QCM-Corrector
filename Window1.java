@@ -2,6 +2,9 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
@@ -214,6 +217,7 @@ public class Window1 extends ClasseAbstraite {
         btn9.setLayoutX(750);
         btn9.setLayoutY(50);
         btn9.setBorder(border);
+        btn9.setOnAction(event -> System.out.println("Implémentation à venir"));
 
         btn10 = new Button("Moyenne");
         btn10.setOnAction(event ->stage.setScene(scene3));
@@ -224,6 +228,7 @@ public class Window1 extends ClasseAbstraite {
         btn10.setLayoutX(750);
         btn10.setLayoutY(150);
         btn10.setBorder(border);
+        btn10.setOnAction(event -> System.out.println("Implémentation à venir"));
 
         btn11 = new Button("Détails");
         btn11.setOnAction(event ->stage.setScene(scene3));
@@ -234,6 +239,7 @@ public class Window1 extends ClasseAbstraite {
         btn11.setLayoutX(750);
         btn11.setLayoutY(250);
         btn11.setBorder(border);
+        btn11.setOnAction(event -> System.out.println("Implémentation à venir"));
 
         btn12 = new Button("Sauvegarde");
         btn12.setOnAction(event ->stage.setScene(scene3));
@@ -244,6 +250,7 @@ public class Window1 extends ClasseAbstraite {
         btn12.setLayoutX(750);
         btn12.setLayoutY(350);
         btn12.setBorder(border);
+        btn12.setOnAction(event -> System.out.println("Implémentation à venir"));
 
 
         btn13 = new Button("MENU PRINCIPAL");
@@ -256,8 +263,30 @@ public class Window1 extends ClasseAbstraite {
         btn13.setBorder(border);
         btn13.setOnAction(event -> switchScenes(scene1));
 
+        btn14 = new Button("CORRECTION");
+        btn14.setMinSize(200,50);
+        btn14.setStyle("-fx-background-color:      #abb2b9    ");
+        btn14.setFont(font);
+        btn14.setTextFill(Color.BLACK);
+        btn14.setLayoutX(400);
+        btn14.setLayoutY(500);
+        btn14.setBorder(border);
+        btn14.setOnAction(event -> switchScenes(scene2));
 
-        root3.getChildren().addAll(btn9,btn10,btn11,btn12,btn13);
+        // Graphique de type Bar Chart
+        final CategoryAxis xAxis = new CategoryAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        final BarChart<String,Number> bc = new BarChart<String,Number>(xAxis,yAxis);
+        bc.setTitle("Distributions des notes");
+        xAxis.setLabel("Notes");
+        yAxis.setLabel("Fréquence");
+
+        stack4.getChildren().add(bc);stack4.setLayoutX(50);stack4.setLayoutY(50);
+        stack4.setBackground(background);stack4.setBorder(border);stack4.setMinSize(650,400);
+
+
+
+        root3.getChildren().addAll(btn9,btn10,btn11,btn12,btn13,btn14,stack4);
         scene3 = new Scene(root3, h, l);
         scene3.setFill(Color.LIGHTGREY);
 

@@ -39,8 +39,7 @@ public abstract class ClasseAbstraite  extends Application {
     protected Button btn11;
     protected Button btn12;
     protected Button btn13;
-
-
+    protected Button btn14;
 
 
     // TestCSV d'exemple de QCM
@@ -83,6 +82,7 @@ public abstract class ClasseAbstraite  extends Application {
     static StackPane stack1 = new StackPane();
     static StackPane stack2 = new StackPane();
     static StackPane stack3 = new StackPane();
+    static StackPane stack4 = new StackPane();
 
     public static void switchScenes(Scene scene) {
         stage.setScene (scene);
