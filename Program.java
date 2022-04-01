@@ -10,10 +10,10 @@ public class Program extends Copies{
         double k = 0;
         //Compare values between each column. The case of corrected QCM must not be empty
         //If that case, no scores
-        for (int i = 0; i < tab1.length; i++) {
+        for (int i = 1; i < tab1.length; i++) {
             for (int j = 1; j < tab1[i].length; j++) {
                 boolean reponsePasFausse = (Objects.equals(tab1[i][j], tab2[i][j]));
-                boolean reponseExistante = (!Objects.equals(tab2[i][j], " "));
+                boolean reponseExistante = (!Objects.equals(tab2[i][j], ""));
                 if (reponsePasFausse){
                     if(reponseExistante) k = k + score;
                 }

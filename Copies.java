@@ -57,13 +57,6 @@ public class Copies {
     public static void main(String[] args) {
 
 
-
-        for (int i = 1; i < arrays.length; i++) {
-            Program p = new Program();
-            p.comparer(arrays[i], corr);
-            p.LectureCorrige(corr);
-            p.LectureCopie(arrays[i]);
-
         }
     }
-}
+
