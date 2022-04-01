@@ -54,9 +54,6 @@ public class Copies {
     static String corrigeQCM;
     static String note;
 
-    public static void main(String[] args) {
-
-
-        }
+    
     }
 
