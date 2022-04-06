@@ -12,6 +12,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.Arrays;
 
 public class Main extends ClassAbstract {
 
@@ -148,6 +149,8 @@ public class Main extends ClassAbstract {
 
         //scene2 Results
         Results.initResults();
+        //Arrays.deepToString((Program.fillstring()));
+
         root2.getChildren().addAll(btn4,btn7,btn5,btn6,stack1,stack2,stack3);
         scene2 = new Scene(root2, h, l);
         scene2.setFill(Color.LIGHTGREY);

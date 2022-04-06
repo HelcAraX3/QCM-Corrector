@@ -1,17 +1,25 @@
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+
+import java.util.Arrays;
 
 class Results extends Copies{
 
     public static void initResults(){ //scene 2 Results
+        
         for (int i =1; i<Copies.arrays.length; i++) {
             Program p = new Program();
             Copies.note = p.compare(Copies.arrays[i], Copies.corr);
-            Copies.copieEtudiant = p.readCopy(Copies.arrays[i]);
-            Copies.corrigeQCM = Program.readCorrection(Copies.corr);
+            Copies.copieEtudiant = p.readCopy(Program.fillstring("Corrige.csv"));
+            Copies.corrigeQCM = Program.readCorrection(Program.fillstring("Copie.csv"));
         }
-        Label answer = new Label(Copies.copieEtudiant);
-        answer.setWrapText(true);
+
+
+
+
+        Text answer = new Text(Copies.copieEtudiant);
+        answer.setWrappingWidth(200);
         answer.setLayoutX(200);
         answer.setLayoutY(200);
         answer.setFont(ClassAbstract.font1);
