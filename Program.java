@@ -59,22 +59,23 @@ public class Program extends Copies{
 
 
     public static String[][] fillstring(String filename) {
-        String [][] toto = new String[10][6];
-
+        String [][] str = new String[10][6];
         String FieldDelimiter = ",";
-        BufferedReader br;
+        BufferedReader br0;
+
         try {
-            br = new BufferedReader(new FileReader(filename));
+            br0 = new BufferedReader(new FileReader(filename));
             String line;
 
             int i = 0;
-            while ((line = br.readLine()) != null) {
+            while ((line = br0.readLine()) != null) {
                 //name[0]=(line.split(FieldDelimiter, 0));
                 //toto.add(line.split(FieldDelimiter, 0));
-                toto[i] = line.split(FieldDelimiter, 0);
+                str[i] = line.split(FieldDelimiter, 0);
                 i++;
 
             }
+
 
 
         } catch (FileNotFoundException e) {
@@ -95,7 +96,7 @@ public class Program extends Copies{
 
 //        System.out.println(name.get(1)[1]);
 
-            return toto;
+            return str;
         }
 
     /*public static String versString(){

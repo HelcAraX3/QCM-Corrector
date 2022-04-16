@@ -1,79 +1,76 @@
+import javafx.scene.Group;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-import java.util.Arrays;
+import java.beans.EventHandler;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Stack;
+import java.util.function.Function;
 
 class Results extends Copies{
-
-    public static void initResults(){ //scene 2 Results
-        
-        for (int i =1; i<Copies.arrays.length; i++) {
-            Program p = new Program();
-            Copies.note = p.compare(Copies.arrays[i], Copies.corr);
-            Copies.copieEtudiant = p.readCopy(Program.fillstring("Corrige.csv"));
-            Copies.corrigeQCM = Program.readCorrection(Program.fillstring("Copie.csv"));
-        }
+    static String filePathCorrection;
+    static String filePathCopy;
+    static ArrayList<String> temp = new ArrayList<>();
+    static int index;
+    static Label copy;
+    static ArrayList<Label> list = new ArrayList<>();
 
 
+    public static void openFile() {
+   }
 
 
-        Text answer = new Text(Copies.copieEtudiant);
-        answer.setWrappingWidth(200);
-        answer.setLayoutX(200);
-        answer.setLayoutY(200);
-        answer.setFont(ClassAbstract.font1);
+    public static Label nextcopy(){
+        for (index=0;index<temp.size();index++){
+        Copies.copieEtudiant=Program.readCopy(Program.fillstring(filePathCopy));
+        copy = new Label(Copies.copieEtudiant);
+        Functions.customLabels(copy,null,200,200,ClassAbstract.font1);
+        list.add(index,copy);}
 
-        Label corrige = new Label(Copies.corrigeQCM);
-        corrige.setWrapText(true);
-        corrige.setLayoutX(200);
-        corrige.setLayoutY(200);
-        corrige.setFont(ClassAbstract.font1);
-
-        Label note_etu = new Label("Note : "+ Copies.note);
-        note_etu.setWrapText(true);
-        note_etu.setLayoutX(200);
-        note_etu.setLayoutY(200);
-        note_etu.setFont(ClassAbstract.font1);
-        note_etu.setTextFill(Color.RED);
-
-        ClassAbstract.stack1.getChildren().add(answer);
-        ClassAbstract.stack1.setLayoutX(150);
-        ClassAbstract.stack1.setLayoutY(30);
-        ClassAbstract.stack1.setBackground(ClassAbstract.background);
-        ClassAbstract.stack1.setBorder(ClassAbstract.border);
-        ClassAbstract.stack1.setMinSize(300,400);
-
-        ClassAbstract.stack2.getChildren().add(corrige);
-        ClassAbstract.stack2.setLayoutX(550);
-        ClassAbstract.stack2.setLayoutY(30);
-        ClassAbstract.stack2.setBackground(ClassAbstract.background);
-        ClassAbstract.stack2.setBorder(ClassAbstract.border);
-        ClassAbstract.stack2.setMinSize(300,400);
-
-        ClassAbstract.stack3.getChildren().add(note_etu);
-        ClassAbstract.stack3.setLayoutX(150);
-        ClassAbstract.stack3.setLayoutY(450);
-        ClassAbstract.stack3.setBackground(ClassAbstract.background);
-        ClassAbstract.stack3.setBorder(ClassAbstract.border);
+        return list.get(1);
     }
 
+    public static void initResults(){ //scene 2 Results
 
-    /**
-    public static void functionBack(){
-        for (int i =Copies.arrays.length; i >=0; i--) {
-            Program p = new Program();
-            Copies.note=p.comparer(Copies.arrays[i], Copies.corr);
-            Copies.copieEtudiant=p.LectureCopie(Copies.arrays[i]);
-            Copies.corrigeQCM=Program.LectureCorrige(Copies.corr);}
-    }**/
+        Copies.note = Program.compare(Program.fillstring(filePathCopy), Program.fillstring(filePathCorrection));
+        Copies.corrigeQCM = Program.readCorrection(Program.fillstring(filePathCorrection));
+        //Copies.copieEtudiant=Program.readCopy(Program.fillstring(filePathCopy));
+        //temp.get()=Program.readCopy(Program.fillstring(filePathCopy));
 
-    /**
-    public static void functionNext(){
-        for (int i =0; i >Copies.arrays.length; i++) {
-            Program p = new Program();
-            Copies.note=p.comparer(Copies.arrays[i], Copies.corr);
-            Copies.copieEtudiant=p.LectureCopie(Copies.arrays[i]);
-            Copies.corrigeQCM=Program.LectureCorrige(Copies.corr);}
-    }**/
+
+
+
+
+
+
+        Main main = new Main();
+        Main.btn6.setOnAction(event -> ClassAbstract.stack1.getChildren().add(nextcopy()));
+
+        Text correction = new Text(Copies.corrigeQCM);
+        Functions.customTexts(correction,200,200,ClassAbstract.font1,200,Color.BLACK);
+
+
+        Text note = new Text("Note : "+ Copies.note);
+        Functions.customTexts(note,200,200,ClassAbstract.font1,50,Color.RED);
+
+
+
+        Functions.customStacks(ClassAbstract.stack1,200,30,ClassAbstract.border,
+        300,400,ClassAbstract.background);
+        Functions.customStacks(ClassAbstract.stack2,550,30,ClassAbstract.border,
+        300,400,ClassAbstract.background);
+        Functions.customStacks(ClassAbstract.stack3,150,450,ClassAbstract.border,
+        30,15,ClassAbstract.background);
+
+        //ClassAbstract.stack1.getChildren().add(nextcopy());
+        ClassAbstract.stack2.getChildren().add(correction);
+        ClassAbstract.stack3.getChildren().add(note);
+        //System.out.println(copy);
+
+    }
+
 }

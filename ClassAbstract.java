@@ -10,6 +10,11 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+
 public abstract class ClassAbstract extends Application {
 
     static Stage stage;
@@ -50,6 +55,7 @@ public abstract class ClassAbstract extends Application {
     static StackPane stack2 = new StackPane();
     static StackPane stack3 = new StackPane();
     static StackPane stack4 = new StackPane();
+    public  static Desktop desktop = Desktop.getDesktop();
 
     //Function switchScenes
     public static void switchScenes(Scene scene) {
@@ -62,5 +68,5 @@ public abstract class ClassAbstract extends Application {
                 new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
     }
 
-    protected static void openFile() {} // Files LOADER
+
 }
