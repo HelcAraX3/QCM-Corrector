@@ -1,3 +1,4 @@
+import AppGui.Functions;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,11 +15,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main extends ClassAbstract {
-
 
 
     @Override
@@ -101,6 +100,8 @@ public class Main extends ClassAbstract {
                     }
         });
 
+
+
         //Build Interface
         root1.getChildren().addAll(btn0,btn1,btn2,btn3,lab1,lab2);
         scene1 = new Scene(root1, h, l);
@@ -132,6 +133,8 @@ public class Main extends ClassAbstract {
         btn6 = new Button();
         Functions.customButtons(btn6,"SUIVANT","-fx-background-color:#abb2b9",font, Color.BLACK,border,
         800,500,150,50);
+
+        btn6.setOnAction(event -> Results.nextCopy());
 
         //scene2 Results
 

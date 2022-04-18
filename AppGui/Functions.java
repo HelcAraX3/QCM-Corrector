@@ -1,4 +1,5 @@
-import javafx.scene.Group;
+package AppGui;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
@@ -9,10 +10,8 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import java.util.Stack;
 
 public class Functions {
-
 
     public static void customButtons(Button btn,String nameBtn, String style,
     Font font, Color color, Border border, double layX, double layY, double minWidth, double minHeigth) {
@@ -49,11 +48,6 @@ public class Functions {
         stack.setMinSize(minWidth,minHeigth);
         stack.setBackground(backG);
     }
-
-
-
-
-
 
 
 
